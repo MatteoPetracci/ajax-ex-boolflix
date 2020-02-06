@@ -34,6 +34,10 @@ function searchMovie(movie) {
   // clicco sul bottone per prendere il valore di input
   var input = $('#input').val();
   console.log(input);
+  if (input == '') {
+    console.log('Inserisci un titolo');
+    $('#film').append('Inserisci un titolo');
+  }
   // chiamata ajax
   $.ajax(
     {
