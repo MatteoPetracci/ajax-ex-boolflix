@@ -8,10 +8,8 @@
 $(document).ready(function() {
   // Prendo il valore di input quando clicco sul bottone
     $('#button').on('click', function() {
-      searchMovie();
-    });
-  });
-
+      var input = $('#input').val();
+      $('#film').empty();
   // chiamata ajax
   $.ajax(
     {
@@ -19,7 +17,7 @@ $(document).ready(function() {
       'method':'GET',
       'data': {
         api_key :'529c9b24599513d9b7c68c4b715e6f75',
-        query : 'la vita è bella'
+        query : input
       },
       'success': function(data) {
         // stampo oggetto
@@ -35,7 +33,8 @@ $(document).ready(function() {
       }
     }
   );
-
+ });
+});
 // **********Funzioni**********
 
 // creo una funzione che cicla dentro l'array che contiene i film e stampo con handlebars
@@ -53,8 +52,10 @@ function printMovie(arrayMovie) {
   }
 }
 
-function searchMovie(movie) {
-  // clicco sul bottone per prendere il valore di input
-      var input = $('#input').val();
-      console.log(input);
-}
+// function searchMovie(movie) {
+//   // clicco sul bottone per prendere il valore di input
+//       var input = $('#input').val();
+//       console.log(input);
+//
+//
+// }
