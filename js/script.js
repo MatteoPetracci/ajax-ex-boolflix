@@ -7,12 +7,8 @@
 
 $(document).ready(function() {
   // Prendo il valore di input quando clicco sul bottone
-  $('#input').on('click', function() {
-    var element = $(this);
-    console.log(element);
     $('#button').on('click', function() {
-      var valInput = element.val();
-      console.log(valInput);
+      searchMovie();
     });
   });
 
@@ -39,7 +35,6 @@ $(document).ready(function() {
       }
     }
   );
-});
 
 // **********Funzioni**********
 
@@ -56,4 +51,10 @@ function printMovie(arrayMovie) {
     var html = template(context);
     $('#film').append(html);
   }
+}
+
+function searchMovie(movie) {
+  // clicco sul bottone per prendere il valore di input
+      var input = $('#input').val();
+      console.log(input);
 }
