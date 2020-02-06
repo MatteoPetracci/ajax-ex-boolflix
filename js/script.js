@@ -23,13 +23,16 @@ $(document).ready(function() {
       'method':'GET',
       'data': {
         api_key :'529c9b24599513d9b7c68c4b715e6f75',
-        query : 'sette anime'
+        query : 'la vita è bella'
       },
       'success': function(data) {
+        // stampo oggetto
         console.log(data);
         // Stampo direttamente l'array che contiene gli oggetti con le varie proprietà
-        console.log(data.results);
-        printFilm(data.results);
+        // console.log(data.results);
+        var results = data.results;
+        console.log(results);
+        printMovie(results);
       },
       'error': function(request, state, error) {
         console.log('error', error);
@@ -42,8 +45,15 @@ $(document).ready(function() {
 
 // creo una funzione che cicla dentro l'array che contiene i film e stampo con handlebars
 
-function printFilm(arrayFilm) {
-  for (var i = 0; i < arrayFilm.length; i++) {
-    console.log(arrayFilm[i]);
+function printMovie(arrayMovie) {
+  var source = $("#entry-template").html();
+  var template = Handlebars.compile(source);
+  for (var i = 0; i < arrayMovie.length; i++) {
+    console.log(arrayMovie[i]);
+    var movie = arrayMovie[i];
+    var context = movie;
+    // console.log(context);
+    var html = template(context);
+    $('#film').append(html);
   }
 }

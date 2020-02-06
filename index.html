@@ -10,15 +10,14 @@
   <title>Document</title>
 </head>
 <body>
+  <!-- input -->
   <input type="text" name="" value="" id="input">
+  <!-- button -->
   <button type="button" name="button" id="button">Clicca qui</button>
+  <!-- lista film -->
+  <ul id="film"></ul>
   <script id="entry-template" type="text/x-handlebars-template">
-    <div class="entry">
-      <h1>{{title}}</h1>
-      <div class="body">
-        {{body}}
-      </div>
-    </div>
+    <li class ="listFilm">{{title}} {{original_title}} {{vote_average}} {{original_language}}</li>
   </script>
   <script src="js/script.js" charset="utf-8"></script>
 </body>
