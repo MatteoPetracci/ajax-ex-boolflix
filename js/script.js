@@ -6,10 +6,34 @@
 // Voto
 
 $(document).ready(function() {
-  // Prendo il valore di input quando clicco sul bottone
     $('#button').on('click', function() {
-      var input = $('#input').val();
       $('#film').empty();
+      searchMovie();
+ });
+});
+
+// **********Funzioni**********
+
+// creo una funzione che cicla dentro l'array che contiene i film e stampo con handlebars
+
+function printMovie(arrayMovie) {
+  var source = $("#entry-template").html();
+  var template = Handlebars.compile(source);
+  for (var i = 0; i < arrayMovie.length; i++) {
+    console.log(arrayMovie[i]);
+    var movie = arrayMovie[i];
+    var context = movie;
+    // console.log(context);
+    var html = template(context);
+    $('#film').append(html);
+  }
+}
+
+
+function searchMovie(movie) {
+  // clicco sul bottone per prendere il valore di input
+  var input = $('#input').val();
+  console.log(input);
   // chiamata ajax
   $.ajax(
     {
@@ -33,31 +57,4 @@ $(document).ready(function() {
       }
     }
   );
- });
-});
-
-// **********Funzioni**********
-
-// creo una funzione che cicla dentro l'array che contiene i film e stampo con handlebars
-
-function printMovie(arrayMovie) {
-  var source = $("#entry-template").html();
-  var template = Handlebars.compile(source);
-  for (var i = 0; i < arrayMovie.length; i++) {
-    console.log(arrayMovie[i]);
-    var movie = arrayMovie[i];
-    var context = movie;
-    // console.log(context);
-    var html = template(context);
-    $('#film').append(html);
-  }
 }
-
-
-// function searchMovie(movie) {
-//   // clicco sul bottone per prendere il valore di input
-//       var input = $('#input').val();
-//       console.log(input);
-//
-//
-// }
