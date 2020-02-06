@@ -55,6 +55,10 @@ function searchMovie(movie) {
         var results = data.results;
         console.log(results);
         printMovie(results);
+        if (results == '') {
+          console.log('ciao');
+          $('#film').append('Non è stato trovato nessun film con questo nome');
+        }
       },
       'error': function(request, state, error) {
         console.log('error', error);
