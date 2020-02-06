@@ -35,6 +35,7 @@ $(document).ready(function() {
   );
  });
 });
+
 // **********Funzioni**********
 
 // creo una funzione che cicla dentro l'array che contiene i film e stampo con handlebars
@@ -51,6 +52,7 @@ function printMovie(arrayMovie) {
     $('#film').append(html);
   }
 }
+
 
 // function searchMovie(movie) {
 //   // clicco sul bottone per prendere il valore di input
