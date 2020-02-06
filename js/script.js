@@ -23,12 +23,13 @@ $(document).ready(function() {
       'method':'GET',
       'data': {
         api_key :'529c9b24599513d9b7c68c4b715e6f75',
-        query : 'la vita è bella'
+        query : 'sette anime'
       },
       'success': function(data) {
         console.log(data);
         // Stampo direttamente l'array che contiene gli oggetti con le varie proprietà
         console.log(data.results);
+        printFilm(data.results);
       },
       'error': function(request, state, error) {
         console.log('error', error);
@@ -36,3 +37,13 @@ $(document).ready(function() {
     }
   );
 });
+
+// **********Funzioni**********
+
+// creo una funzione che cicla dentro l'array che contiene i film e stampo con handlebars
+
+function printFilm(arrayFilm) {
+  for (var i = 0; i < arrayFilm.length; i++) {
+    console.log(arrayFilm[i]);
+  }
+}
