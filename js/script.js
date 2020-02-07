@@ -96,11 +96,11 @@ function searchMovie(movie) {
 
 function printStar(vote) {
   // Rendo il numero intero
-  var num = Math.floor((vote / 2));
+  vote = Math.floor((vote / 2));
   var star = "";
   // Ciclo il max delle stelle per stampare le icone
-  for (var i = 0; i < 5; i++) {
-    if (i < num) {
+  for (var i = 1; i <= 5; i++) {
+    if (i <= vote) {
       star += '<i class="fas fa-star"></i>';
     } else {
       star += '<i class="far fa-star"></i>';
