@@ -66,3 +66,28 @@ function searchMovie(movie) {
     }
   );
 }
+
+
+// funzione per trasformare il voto da 1 a 5 a 1 e 5, eliminando il decimale da aggiungere l'arrotondamento in eccesso
+numIntgr(parseInt(prompt('Inserisci un numero')));
+
+function numIntgr(num){
+  var numIntgr = parseInt(num);
+  console.log(numIntgr);
+  if (numIntgr == 1 || numIntgr == 2) {
+    numIntgr = 1;
+    // console.log(numIntgr);
+  } else if (numIntgr == 3 || numIntgr == 4) {
+    numIntgr = 2;
+    console.log(numIntgr);
+  } else if (numIntgr == 5 || numIntgr == 6) {
+    numIntgr = 3;
+    console.log(numIntgr);
+  } else if (numIntgr == 7 || numIntgr == 8) {
+    numIntgr = 4;
+    console.log(numIntgr);
+  } else if (numIntgr == 9 || numIntgr == 10) {
+    numIntgr = 5;
+    console.log(numIntgr);
+  }
+}
