@@ -43,14 +43,16 @@ function printMovie(arrayMovie) {
     // console.log(arrayMovie[i]);
     var movie = arrayMovie[i];
     // var num = numIntgr(movie.vote_average);
-    console.log(movie.vote_average);
+    // console.log(movie.vote_average);
+    // console.log(movie.original_language);
     var context = {
       'title': movie.title,
       'original_title': movie.original_title,
-      'lang': movie.original_language,
+      'lang': printFlag(movie.original_language),
       'vote': movie.vote_average,
       'star': printStar(movie.vote_average)
     };
+    console.log(movie.original_language);
     // console.log(printStar(movie.vote_average));
     var html = template(context);
     $('#film').append(html);
@@ -72,7 +74,8 @@ function searchMovie(movie) {
       'method':'GET',
       'data': {
         api_key :'529c9b24599513d9b7c68c4b715e6f75',
-        query : input
+        query : input,
+        language: "it-IT"
       },
       'success': function(data) {
         // stampo oggetto
@@ -109,35 +112,19 @@ function printStar(vote) {
   return star
 }
 
+// movie.original_language restiuisce le prime due lettere della lingua usata en, it, fr
 
-
-
-
-
-
-
-
-
-// funzione per trasformare il voto da 1 a 10 a 1 e 5, eliminando il decimale da aggiungere l'arrotondamento in eccesso
-// numIntgr(parseInt(prompt('Inserisci un numero')));
-//
-// function numIntgr(num){
-  //   var numIntgr = parseInt(num);
-  //   // console.log(numIntgr);
-  //   if (numIntgr == 1 || numIntgr == 2) {
-    //     return 1;
-    //     // console.log(numIntgr);
-    //   } else if (numIntgr == 3 || numIntgr == 4) {
-      //     return 2;
-      //     // console.log(numIntgr);
-      //   } else if (numIntgr == 5 || numIntgr == 6) {
-        //     return 3;
-        //     // console.log(numIntgr);
-        //   } else if (numIntgr == 7 || numIntgr == 8) {
-          //     return 4;
-          //     // console.log(numIntgr);
-          //   } else if (numIntgr == 9 || numIntgr == 10) {
-            //     return 5;
-            //     // console.log(numIntgr);
-            //   }
-            // }
+function printFlag(lang) {
+  // creo un array con lo stesso risultato che ottengo da movie.original_language
+  var langString = ['en', 'it', 'fr', 'es'];
+  console.log(langString);
+  var flag = "";
+  // se nell'array è contenuto movie.original_language stampa l'immagine
+  if (langString.includes(lang)) {
+    flag = flag + '<img src="img/' + lang + '.png">';
+    // altrimenti
+  } else {
+    return lang;
+  }
+  return flag;
+}
