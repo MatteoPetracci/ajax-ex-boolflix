@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css">
   <title>Document</title>
 </head>
@@ -17,8 +18,23 @@
   <!-- lista film -->
   <ul id="film"></ul>
   <script id="entry-template" type="text/x-handlebars-template">
-    <li class ="listFilm">{{title}} {{original_title}} {{vote_average}} {{original_language}}</li>
+    <li class ="listFilm">
+      <ul>
+        <li>Titolo film: {{title}}</li>
+        <li>Titolo originale film: {{original_title}}</li>
+        <li>Voto: {{vote}}</li>
+        <li>Lingua originale: {{lang}}</li>
+        <li>*************************************</li>
+      </ul>
+    </li>
   </script>
   <script src="js/script.js" charset="utf-8"></script>
 </body>
 </html>
+
+
+<!-- {{title}} {{original_title}} {{vote_average}} {{original_language}} -->
+
+
+<!-- <i class="fas fa-star"></i>  FULL -->
+<!-- <i class="far fa-star"></i>  EMPTY -->

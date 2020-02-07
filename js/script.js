@@ -20,20 +20,23 @@ function printMovie(arrayMovie) {
   var source = $("#entry-template").html();
   var template = Handlebars.compile(source);
   for (var i = 0; i < arrayMovie.length; i++) {
-    console.log(arrayMovie[i]);
+    // console.log(arrayMovie[i]);
     var movie = arrayMovie[i];
-    var context = movie;
-    // console.log(context);
+    var context = {
+      'title': movie.title,
+      'original_title': movie.original_title,
+      'lang': movie.original_language,
+      'vote': movie.vote_average + ' ' + numIntgr(movie.vote_average),
+    };
     var html = template(context);
     $('#film').append(html);
   }
 }
 
-
 function searchMovie(movie) {
   // clicco sul bottone per prendere il valore di input
   var input = $('#input').val();
-  console.log(input);
+  // console.log(input);
   if (input == '') {
     console.log('Inserisci un titolo');
     $('#film').append('Inserisci un titolo');
@@ -49,45 +52,44 @@ function searchMovie(movie) {
       },
       'success': function(data) {
         // stampo oggetto
-        console.log(data);
+        // console.log(data);
         // Stampo direttamente l'array che contiene gli oggetti con le varie proprietà
         // console.log(data.results);
         var results = data.results;
-        console.log(results);
+        // console.log(results);
         printMovie(results);
         if (results == '') {
-          console.log('ciao');
+          // console.log('ciao');
           $('#film').append('Non è stato trovato nessun film con questo nome');
         }
       },
       'error': function(request, state, error) {
-        console.log('error', error);
+        // console.log('error', error);
       }
     }
   );
 }
 
-
-// funzione per trasformare il voto da 1 a 5 a 1 e 5, eliminando il decimale da aggiungere l'arrotondamento in eccesso
-numIntgr(parseInt(prompt('Inserisci un numero')));
+// funzione per trasformare il voto da 1 a 10 a 1 e 5, eliminando il decimale da aggiungere l'arrotondamento in eccesso
+// numIntgr(parseInt(prompt('Inserisci un numero')));
 
 function numIntgr(num){
   var numIntgr = parseInt(num);
-  console.log(numIntgr);
+  // console.log(numIntgr);
   if (numIntgr == 1 || numIntgr == 2) {
-    numIntgr = 1;
+    return 1;
     // console.log(numIntgr);
   } else if (numIntgr == 3 || numIntgr == 4) {
-    numIntgr = 2;
-    console.log(numIntgr);
+    return 2;
+    // console.log(numIntgr);
   } else if (numIntgr == 5 || numIntgr == 6) {
-    numIntgr = 3;
-    console.log(numIntgr);
+    return 3;
+    // console.log(numIntgr);
   } else if (numIntgr == 7 || numIntgr == 8) {
-    numIntgr = 4;
-    console.log(numIntgr);
+    return 4;
+    // console.log(numIntgr);
   } else if (numIntgr == 9 || numIntgr == 10) {
-    numIntgr = 5;
-    console.log(numIntgr);
+    return 5;
+    // console.log(numIntgr);
   }
 }
