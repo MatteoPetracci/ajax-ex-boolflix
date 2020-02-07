@@ -29,12 +29,17 @@ $(document).ready(function() {
   $('#button').on('click', function() {
     $('#film').empty();
     searchMovie();
+    searchTvShow();
+    // ripristino il campo input vuoto
+    $('input').val('');
   });
   // invio con la tastiera
   $('input').keypress(function(){
     if (event.which == 13) {
       $('#film').empty();
       searchMovie();
+      searchTvShow();
+      $('input').val('');
     }
   });
 });
@@ -103,6 +108,8 @@ function searchMovie(movie) {
   );
 }
 
+
+
 function printStar(vote) {
   // Rendo il numero intero
   vote = Math.floor((vote / 2));
@@ -133,4 +140,60 @@ function printFlag(lang) {
     return lang;
   }
   return flag;
+}
+
+// *************************************************
+
+function printTvShow(arrayMovie) {
+  var source = $("#tv_show").html();
+  var template = Handlebars.compile(source);
+  for (var i = 0; i < arrayMovie.length; i++) {
+    var movie = arrayMovie[i];
+    var context = {
+      'name': movie.name,
+      'original_name': movie.original_name,
+      'lang': printFlag(movie.original_language),
+      'vote': movie.vote_average,
+      'star': printStar(movie.vote_average)
+    };
+    console.log(movie.original_language);
+    var html = template(context);
+    $('#film').append(html);
+  }
+}
+
+
+
+// *****************************************************
+
+
+
+
+function searchTvShow(movie){
+  var input = $('#input').val();
+  if (input == '') {
+    console.log('Inserisci un titolo');
+    $('#film').append('Inserisci un titolo');
+  }
+  $.ajax(
+    {
+      'url': 'https://api.themoviedb.org/3/search/tv',
+      'method':'GET',
+      'data': {
+        api_key :'529c9b24599513d9b7c68c4b715e6f75',
+        query : input,
+        language: "it-IT"
+      },
+      'success': function(data) {
+        var results = data.results;
+        printTvShow(results);
+        if (results == '') {
+          $('#film').append('Non è stato trovato nessun film con questo nome');
+        }
+      },
+      'error': function(request, state, error) {
+        console.log('error', error);
+      }
+    }
+  );
 }

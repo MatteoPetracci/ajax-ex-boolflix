@@ -18,13 +18,24 @@
   <!-- lista film -->
   <ul id="film"></ul>
   <script id="entry-template" type="text/x-handlebars-template">
-    <ul class ="listFilm">
+    <ul class ="list_movie">
+        <h3>Film</h3>
         <li>Titolo film: {{title}}</li>
         <li>Titolo originale film: {{original_title}}</li>
         <li>Voto: {{vote}} - {{{star}}}</li>
         <li>Lingua originale: {{{lang}}}</li>
         <li>*************************************</li>
         <!-- <img src="img/it.png" alt=""> -->
+    </ul>
+  </script>
+  <script id="tv_show" type="text/x-handlebars-template">
+    <ul class ="list_tv_show">
+        <h3>Serie TV</h3>
+        <li>Titolo SerieTV: {{name}}</li>
+        <li>Titolo originale SerieTV: {{original_name}}</li>
+        <li>Voto: {{vote}} - {{{star}}}</li>
+        <li>Lingua originale: {{{lang}}}</li>
+        <li>*************************************</li>
     </ul>
   </script>
   <script src="js/script.js" charset="utf-8"></script>
