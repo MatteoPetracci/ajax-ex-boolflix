@@ -42,12 +42,16 @@ function printMovie(arrayMovie) {
   for (var i = 0; i < arrayMovie.length; i++) {
     // console.log(arrayMovie[i]);
     var movie = arrayMovie[i];
+    // var num = numIntgr(movie.vote_average);
+    console.log(movie.vote_average);
     var context = {
       'title': movie.title,
       'original_title': movie.original_title,
       'lang': movie.original_language,
-      'vote': movie.vote_average + ' ' + numIntgr(movie.vote_average),
+      'vote': movie.vote_average,
+      'star': printStar(movie.vote_average)
     };
+    // console.log(printStar(movie.vote_average));
     var html = template(context);
     $('#film').append(html);
   }
@@ -90,37 +94,50 @@ function searchMovie(movie) {
   );
 }
 
-// funzione per trasformare il voto da 1 a 10 a 1 e 5, eliminando il decimale da aggiungere l'arrotondamento in eccesso
-// numIntgr(parseInt(prompt('Inserisci un numero')));
-
-function numIntgr(num){
-  var numIntgr = parseInt(num);
-  // console.log(numIntgr);
-  if (numIntgr == 1 || numIntgr == 2) {
-    return 1;
-    // console.log(numIntgr);
-  } else if (numIntgr == 3 || numIntgr == 4) {
-    return 2;
-    // console.log(numIntgr);
-  } else if (numIntgr == 5 || numIntgr == 6) {
-    return 3;
-    // console.log(numIntgr);
-  } else if (numIntgr == 7 || numIntgr == 8) {
-    return 4;
-    // console.log(numIntgr);
-  } else if (numIntgr == 9 || numIntgr == 10) {
-    return 5;
-    // console.log(numIntgr);
-  }
-}
-printStar(3)
-// Stampa stelle
-function printStar(num){
-  for (var i = 1; i <= 5; i++) {
-    console.log(i);
+function printStar(vote) {
+  // Rendo il numero intero
+  var num = Math.floor((vote / 2));
+  var star = "";
+  // Ciclo il max delle stelle per stampare le icone
+  for (var i = 0; i < 5; i++) {
     if (i < num) {
-      console.log('ciao');
+      star += '<i class="fas fa-star"></i>';
+    } else {
+      star += '<i class="far fa-star"></i>';
     }
   }
-
+  return star
 }
+
+
+
+
+
+
+
+
+
+
+// funzione per trasformare il voto da 1 a 10 a 1 e 5, eliminando il decimale da aggiungere l'arrotondamento in eccesso
+// numIntgr(parseInt(prompt('Inserisci un numero')));
+//
+// function numIntgr(num){
+  //   var numIntgr = parseInt(num);
+  //   // console.log(numIntgr);
+  //   if (numIntgr == 1 || numIntgr == 2) {
+    //     return 1;
+    //     // console.log(numIntgr);
+    //   } else if (numIntgr == 3 || numIntgr == 4) {
+      //     return 2;
+      //     // console.log(numIntgr);
+      //   } else if (numIntgr == 5 || numIntgr == 6) {
+        //     return 3;
+        //     // console.log(numIntgr);
+        //   } else if (numIntgr == 7 || numIntgr == 8) {
+          //     return 4;
+          //     // console.log(numIntgr);
+          //   } else if (numIntgr == 9 || numIntgr == 10) {
+            //     return 5;
+            //     // console.log(numIntgr);
+            //   }
+            // }
