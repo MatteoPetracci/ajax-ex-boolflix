@@ -26,10 +26,17 @@
 // *********************************************************
 
 $(document).ready(function() {
-    $('#button').on('click', function() {
+  $('#button').on('click', function() {
+    $('#film').empty();
+    searchMovie();
+  });
+  // invio con la tastiera
+  $('input').keypress(function(){
+    if (event.which == 13) {
       $('#film').empty();
       searchMovie();
- });
+    }
+  });
 });
 
 // **********Funzioni**********
@@ -78,7 +85,6 @@ function searchMovie(movie) {
         language: "it-IT"
       },
       'success': function(data) {
-        // stampo oggetto
         // console.log(data);
         // Stampo direttamente l'array che contiene gli oggetti con le varie proprietà
         // console.log(data.results);
