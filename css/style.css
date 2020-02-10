@@ -144,13 +144,14 @@ input {
 
 .box_handle {
   width: 100%;
-  border: 2px solid white;
+  /* border: 2px solid white; */
   position: absolute;
   top: 30%;
   left: 0;
   font-size: .85em;
   margin-top: 20px;
   cursor: pointer;
+  padding: 0 10px;
 }
 
 .box_handle li {
@@ -171,7 +172,8 @@ ul.box_handle {
 
 .list_tv_show:hover .box_handle,
 .list_movie:hover .box_handle {
-  display: flex;
+  display: block;
+  text-align: center;
 }
 
 
