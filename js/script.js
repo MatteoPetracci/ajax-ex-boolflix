@@ -42,6 +42,12 @@ $(document).ready(function() {
       $('input').val('');
     }
   });
+  $('.list_movie').on('hover', function() {
+    $('ul.box_handle').addClass('flex');
+  })
+  $('.list_tv_show').on('hover', function() {
+    $('ul.box_handle').addClass('flex');
+  })
 });
 
 // **********Funzioni**********

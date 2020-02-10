@@ -55,7 +55,6 @@
   <!-- HANDLEBARS -->
   <script id="entry-template" type="text/x-handlebars-template">
     <ul class ="list_movie">
-      <img class="lang" src="{{path_img}}" alt="">
       <ul class="box_handle">
         <h3>Film</h3>
         <li>Titolo film: {{title}}</li>
@@ -64,17 +63,18 @@
         <li>Lingua originale: {{{lang}}}</li>
       </li>
       </ul>
+      <img class="lang" src="{{path_img}}" alt="">
     </ul>
   </script>
   <script id="tv_show" type="text/x-handlebars-template">
     <ul class ="list_tv_show">
-      <img  class="lang" src="{{path_img}}" alt="">
       <ul class="box_handle">
         <h3>Serie TV</h3>
         <li>Titolo SerieTV: {{name}}</li>
         <li>Titolo originale SerieTV: {{original_name}}</li>
         <li>Voto: {{vote}} - {{{star}}}</li>
         <li>Lingua originale: {{{lang}}}</li>
+        <img class="lang" src="{{path_img}}" alt="">
       </ul>
     </ul>
   </script>
