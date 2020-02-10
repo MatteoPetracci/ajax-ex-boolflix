@@ -13,6 +13,19 @@ ul {
   list-style: none;
 }
 
+button {
+  margin-top: 20px;
+  width: 30px;
+  height: 20px;
+  background-image: url(../img/search.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-style: none;
+  background-color: black;
+  padding: 6px;
+  cursor: pointer;
+}
+
 /* ul li {
   margin: 20px;
 } */
@@ -87,9 +100,12 @@ li#white {
   vertical-align: middle;
 }
 
-input,
-button {
+input {
   height: 32px;
+  margin-right: 12px;
+  border-radius: 15px;
+  border-width: 0;
+  padding: 10px;
 }
 
 .box_searchbar {
@@ -105,3 +121,5 @@ button {
 .fa-bell {
   font-size: 1.3em;
 }
+
+/* SEZIONE FILM */

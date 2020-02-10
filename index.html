@@ -28,8 +28,8 @@
       </div>
       <div class="flex_right">
         <div class="box_searchbar">
-          <input type="text" name="" value="" id="input" placeholder="Inserisci il titolo di un film">
-          <button type="button" name="button" id="button">Clicca qui</button>
+          <input type="text" name="" value="" id="input" placeholder="Search">
+          <button type="button" name="button" id="button"></button>
         </div>
         <ul>
           <li>Matteo</li>
@@ -43,8 +43,15 @@
       </div>
     </div>
   </header>
+
   <!-- lista film -->
-  <ul id="film"></ul>
+  <main>
+    <div class="box_film">
+      <ul id="film"></ul>
+    </div>
+  </main>
+
+  <!-- HANDLEBARS -->
   <script id="entry-template" type="text/x-handlebars-template">
     <ul class ="list_movie">
       <h3>Film</h3>
