@@ -43,6 +43,11 @@ header {
   margin-right: 35px;
 }
 
+.flex_item,
+.flex_right {
+  width: 50%;
+}
+
 .flex_item ul {
   /* border: 2px solid white; */
   display: flex;
@@ -63,4 +68,40 @@ li#white {
   color: white;
   transition: .5s;
   cursor: pointer;
+}
+
+.flex_right {
+  /* border: 3px solid yellow; */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex_right ul {
+  display: flex;
+  line-height: 100px;
+  justify-content: flex-end;
+}
+
+.flex_right img {
+  width: 40px;
+  vertical-align: middle;
+}
+
+input,
+button {
+  height: 32px;
+}
+
+.box_searchbar {
+  line-height: 100px;
+}
+
+.flex_right ul li {
+  padding: 0 10px;
+  color: rgb(213,213,213);
+  font-size: .95em;
+}
+
+.fa-bell {
+  font-size: 1.3em;
 }
