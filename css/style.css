@@ -4,14 +4,63 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
 ul {
   list-style: none;
 }
 
-ul li {
+/* ul li {
   margin: 20px;
-}
+} */
 
 .img_lng {
   width: 30px;
+}
+
+/* HEADER */
+
+header {
+  height: 100px;
+  width: 100%;
+  background-color: black;
+}
+
+.box_header {
+  display: flex;
+  color: white;
+  width: 94%;
+  margin: auto;
+}
+
+#netflix {
+  width: 140px;
+  vertical-align: middle;
+  line-height: 100px;
+  margin-right: 35px;
+}
+
+.flex_item ul {
+  /* border: 2px solid white; */
+  display: flex;
+  line-height: 100px;
+}
+
+.flex_item ul li {
+  padding: 0 12px;
+  color: rgb(213,213,213);
+  font-size: .95em;
+}
+
+li#white {
+  color: white;
+}
+
+.flex_item ul li:hover {
+  color: white;
+  transition: .5s;
+  cursor: pointer;
 }
