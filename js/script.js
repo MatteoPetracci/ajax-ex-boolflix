@@ -194,7 +194,8 @@ function printFlag(lang) {
 
 // risultato della chiamata "poster_path": "/eo2Xu4UWXHE8UlBlAktNiSsAmfx.jpg"
 function printImg(pathImg){
-  var url = 'https://image.tmdb.org/t/p/w185'
+  var url = 'https://image.tmdb.org/t/p/w185/'
   var urlImg = url + pathImg;
   console.log(urlImg);
+  return urlImg;
 }
