@@ -188,7 +188,3 @@ img.lang:hover {
   opacity: .1;
   cursor: pointer;
 }
-
-li.scroll {
-  overflow: scroll;
-}

@@ -69,6 +69,7 @@ function printMovie(arrayMovie) {
     console.log(movie.original_language);
     console.log(printImg(movie.poster_path));
     // console.log(printStar(movie.vote_average));
+
     var html = template(context);
     $('#film').append(html);
   }
@@ -91,7 +92,7 @@ function printTvShow(arrayMovie) {
     console.log(movie.overview);
     console.log(movie.original_language);
     console.log(printImg(movie.poster_path));
-    
+
     var html = template(context);
     $('#film').append(html);
   }
@@ -120,11 +121,11 @@ function searchMovie(movie) {
         // Stampo direttamente l'array che contiene gli oggetti con le varie proprietà
         // console.log(data.results);
         var results = data.results;
-        // console.log(results);
+        console.log(results);
         printMovie(results);
         if (results == '') {
           // console.log('ciao');
-          $('#film_text').append('Non è stato trovato nessun film con questo nome  ');
+          // $('#film_text').append('Non è stato trovato nessun film con questo nome  ');
         }
       },
       'error': function(request, state, error) {
