@@ -46,6 +46,7 @@
 
   <!-- lista film -->
   <main>
+    <h3 id="film_text"></h3>
     <div class="box_film">
       <ul id="film"></ul>
     </div>
@@ -54,24 +55,27 @@
   <!-- HANDLEBARS -->
   <script id="entry-template" type="text/x-handlebars-template">
     <ul class ="list_movie">
-      <h3>Film</h3>
-      <li>Titolo film: {{title}}</li>
-      <li>Titolo originale film: {{original_title}}</li>
-      <li>Voto: {{vote}} - {{{star}}}</li>
-      <li>Lingua originale: {{{lang}}}</li>
-      <img src="{{path_img}}" alt="">
-      <li>*************************************</li>
+      <img class="lang" src="{{path_img}}" alt="">
+      <ul class="box_handle">
+        <h3>Film</h3>
+        <li>Titolo film: {{title}}</li>
+        <li>Titolo originale film: {{original_title}}</li>
+        <li>Voto: {{vote}} - {{{star}}}</li>
+        <li>Lingua originale: {{{lang}}}</li>
+      </li>
+      </ul>
     </ul>
   </script>
   <script id="tv_show" type="text/x-handlebars-template">
     <ul class ="list_tv_show">
-      <h3>Serie TV</h3>
-      <li>Titolo SerieTV: {{name}}</li>
-      <li>Titolo originale SerieTV: {{original_name}}</li>
-      <li>Voto: {{vote}} - {{{star}}}</li>
-      <li>Lingua originale: {{{lang}}}</li>
-      <img src="{{path_img}}" alt="">
-      <li>*************************************</li>
+      <img  class="lang" src="{{path_img}}" alt="">
+      <ul class="box_handle">
+        <h3>Serie TV</h3>
+        <li>Titolo SerieTV: {{name}}</li>
+        <li>Titolo originale SerieTV: {{original_name}}</li>
+        <li>Voto: {{vote}} - {{{star}}}</li>
+        <li>Lingua originale: {{{lang}}}</li>
+      </ul>
     </ul>
   </script>
   <script src="js/script.js" charset="utf-8"></script>

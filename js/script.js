@@ -100,7 +100,7 @@ function searchMovie(movie) {
   // console.log(input);
   if (input == '') {
     console.log('Inserisci un titolo');
-    $('#film').append('Inserisci un titolo');
+    $('#film').append(' Inserisci un titolo di una serie televisiva');
   }
   // chiamata ajax
   $.ajax(
@@ -121,7 +121,7 @@ function searchMovie(movie) {
         printMovie(results);
         if (results == '') {
           // console.log('ciao');
-          $('#film').append('Non è stato trovato nessun film con questo nome');
+          $('#film_text').append('Non è stato trovato nessun film con questo nome  ');
         }
       },
       'error': function(request, state, error) {
@@ -135,7 +135,7 @@ function searchTvShow(movie){
   var input = $('#input').val();
   if (input == '') {
     console.log('Inserisci un titolo');
-    $('#film').append('Inserisci un titolo');
+    $('#film').append('Inserisci un titolo di un film');
   }
   $.ajax(
     {
@@ -194,7 +194,7 @@ function printFlag(lang) {
 
 // risultato della chiamata "poster_path": "/eo2Xu4UWXHE8UlBlAktNiSsAmfx.jpg"
 function printImg(pathImg){
-  var url = 'https://image.tmdb.org/t/p/w185/'
+  var url = 'https://image.tmdb.org/t/p/w342/'
   var urlImg = url + pathImg;
   console.log(urlImg);
   return urlImg;

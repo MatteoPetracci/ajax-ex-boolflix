@@ -7,6 +7,13 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  background-color: black;
+  color: white;
+}
+
+main {
+  width: 100%;
+  margin: auto;
 }
 
 ul {
@@ -123,3 +130,31 @@ input {
 }
 
 /* SEZIONE FILM */
+
+.box_film {
+  width: 94%;
+  margin: auto;
+}
+
+.box_film ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box_handle {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: .85em;
+}
+
+.list_movie,
+.list_tv_show {
+  position: relative;
+  margin-left: 10px;
+  margin-bottom: 30px;
+}
