@@ -63,7 +63,8 @@ function printMovie(arrayMovie) {
       'original_title': movie.original_title,
       'lang': printFlag(movie.original_language),
       'vote': movie.vote_average,
-      'star': printStar(movie.vote_average)
+      'star': printStar(movie.vote_average),
+      'overview': movie.overview
     };
     console.log(movie.original_language);
     console.log(printImg(movie.poster_path));
@@ -84,11 +85,13 @@ function printTvShow(arrayMovie) {
       'original_name': movie.original_name,
       'lang': printFlag(movie.original_language),
       'vote': movie.vote_average,
-      'star': printStar(movie.vote_average)
+      'star': printStar(movie.vote_average),
+      'overview': movie.overview
     };
+    console.log(movie.overview);
     console.log(movie.original_language);
     console.log(printImg(movie.poster_path));
-
+    
     var html = template(context);
     $('#film').append(html);
   }
@@ -194,7 +197,7 @@ function printFlag(lang) {
 
 // risultato della chiamata "poster_path": "/eo2Xu4UWXHE8UlBlAktNiSsAmfx.jpg"
 function printImg(pathImg){
-  var url = 'https://image.tmdb.org/t/p/w342/'
+  var url = 'https://image.tmdb.org/t/p/w185/'
   var urlImg = url + pathImg;
   console.log(urlImg);
   return urlImg;
