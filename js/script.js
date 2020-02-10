@@ -58,6 +58,7 @@ function printMovie(arrayMovie) {
     // console.log(movie.vote_average);
     // console.log(movie.original_language);
     var context = {
+      'path_img': printImg(movie.poster_path),
       'title': movie.title,
       'original_title': movie.original_title,
       'lang': printFlag(movie.original_language),
@@ -65,7 +66,29 @@ function printMovie(arrayMovie) {
       'star': printStar(movie.vote_average)
     };
     console.log(movie.original_language);
+    console.log(printImg(movie.poster_path));
     // console.log(printStar(movie.vote_average));
+    var html = template(context);
+    $('#film').append(html);
+  }
+}
+
+function printTvShow(arrayMovie) {
+  var source = $("#tv_show").html();
+  var template = Handlebars.compile(source);
+  for (var i = 0; i < arrayMovie.length; i++) {
+    var movie = arrayMovie[i];
+    var context = {
+      'path_img': printImg(movie.poster_path),
+      'name': movie.name,
+      'original_name': movie.original_name,
+      'lang': printFlag(movie.original_language),
+      'vote': movie.vote_average,
+      'star': printStar(movie.vote_average)
+    };
+    console.log(movie.original_language);
+    console.log(printImg(movie.poster_path));
+
     var html = template(context);
     $('#film').append(html);
   }
@@ -108,7 +131,34 @@ function searchMovie(movie) {
   );
 }
 
-
+function searchTvShow(movie){
+  var input = $('#input').val();
+  if (input == '') {
+    console.log('Inserisci un titolo');
+    $('#film').append('Inserisci un titolo');
+  }
+  $.ajax(
+    {
+      'url': 'https://api.themoviedb.org/3/search/tv',
+      'method':'GET',
+      'data': {
+        api_key :'529c9b24599513d9b7c68c4b715e6f75',
+        query : input,
+        language: "it-IT"
+      },
+      'success': function(data) {
+        var results = data.results;
+        printTvShow(results);
+        if (results == '') {
+          $('#film').append('Non è stato trovato nessuna serie tv con questo nome');
+        }
+      },
+      'error': function(request, state, error) {
+        console.log('error', error);
+      }
+    }
+  );
+}
 
 function printStar(vote) {
   // Rendo il numero intero
@@ -134,66 +184,17 @@ function printFlag(lang) {
   var flag = "";
   // se nell'array è contenuto movie.original_language stampa l'immagine
   if (langString.includes(lang)) {
-    flag = flag + '<img src="img/' + lang + '.png">';
-    // altrimenti
+    flag += '<img class="img_lng" src="img/' + lang + '.png">';
+    // altrimenti ritorno la sigla della lingua
   } else {
     return lang;
   }
   return flag;
 }
 
-// *************************************************
-
-function printTvShow(arrayMovie) {
-  var source = $("#tv_show").html();
-  var template = Handlebars.compile(source);
-  for (var i = 0; i < arrayMovie.length; i++) {
-    var movie = arrayMovie[i];
-    var context = {
-      'name': movie.name,
-      'original_name': movie.original_name,
-      'lang': printFlag(movie.original_language),
-      'vote': movie.vote_average,
-      'star': printStar(movie.vote_average)
-    };
-    console.log(movie.original_language);
-    var html = template(context);
-    $('#film').append(html);
-  }
-}
-
-
-
-// *****************************************************
-
-
-
-
-function searchTvShow(movie){
-  var input = $('#input').val();
-  if (input == '') {
-    console.log('Inserisci un titolo');
-    $('#film').append('Inserisci un titolo');
-  }
-  $.ajax(
-    {
-      'url': 'https://api.themoviedb.org/3/search/tv',
-      'method':'GET',
-      'data': {
-        api_key :'529c9b24599513d9b7c68c4b715e6f75',
-        query : input,
-        language: "it-IT"
-      },
-      'success': function(data) {
-        var results = data.results;
-        printTvShow(results);
-        if (results == '') {
-          $('#film').append('Non è stato trovato nessun film con questo nome');
-        }
-      },
-      'error': function(request, state, error) {
-        console.log('error', error);
-      }
-    }
-  );
+// risultato della chiamata "poster_path": "/eo2Xu4UWXHE8UlBlAktNiSsAmfx.jpg"
+function printImg(pathImg){
+  var url = 'https://image.tmdb.org/t/p/w185'
+  var urlImg = url + pathImg;
+  console.log(urlImg);
 }
