@@ -13,7 +13,7 @@ $(document).ready(function() {
 // **********Funzioni**********
 
 function searchAll() {
-  $('#film').empty();
+  $('#movie').empty();
   var input = $('#input').val();
   var key = '529c9b24599513d9b7c68c4b715e6f75';
   var urlMovie = 'https://api.themoviedb.org/3/search/movie' ;
@@ -30,11 +30,7 @@ function printMovie(arrayMovie) {
   var source = $("#entry-template").html();
   var template = Handlebars.compile(source);
   for (var i = 0; i < arrayMovie.length; i++) {
-    // console.log(arrayMovie[i]);
     var movie = arrayMovie[i];
-    // var num = numIntgr(movie.vote_average);
-    // console.log(movie.vote_average);
-    // console.log(movie.original_language);
     var poster = '/ocsmt4duUyNZtTM641k262PBeIU.jpg';
     if (movie.poster_path) {
       poster = movie.poster_path;
@@ -52,17 +48,8 @@ function printMovie(arrayMovie) {
       'star': printStar(movie.vote_average),
       'overview': overview
     };
-    console.log(movie.poster_path);
-    console.log(movie.overview);
-
-
-    // console.log(movie.poster_path);
-    // console.log(movie.original_language);
-    // console.log(printImg(movie.poster_path));
-    // console.log(printStar(movie.vote_average));
-
     var html = template(context);
-    $('#film').append(html);
+    $('#movie').append(html);
   }
 }
 
@@ -88,30 +75,17 @@ function printTvShow(arrayMovie) {
       'star': printStar(movie.vote_average),
       'overview': overview
     };
-
-    // console.log(movie.poster_path);
-
-    // if (movie.poster_path == null) {
-    //   movie.poster_path = '/ocsmt4duUyNZtTM641k262PBeIU.jpg';
-    // }
-
-    console.log(movie.poster_path);
-    // console.log(movie.poster_path);
-
-    // console.log(printImg(movie.poster_path));
-    // console.log(movie.overview);
-    // console.log(movie.original_language);
-
     var html = template(context);
-    $('#film').append(html);
+    $('#tv').append(html);
   }
 }
 
 function searchMovie(input, key, url) {
   if (input == '') {
     console.log('Inserisci un titolo');
-    $('#film').append(' Inserisci un titolo');
+    $('#film_text').append(' Inserisci un titolo');
   }
+  $('#film_text').empty();
   // chiamata ajax
   $.ajax(
     {

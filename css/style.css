@@ -20,6 +20,10 @@ ul {
   list-style: none;
 }
 
+h2 {
+  padding: 10px;
+}
+
 button {
   margin-top: 20px;
   width: 30px;
@@ -47,7 +51,13 @@ button {
 header {
   height: 100px;
   width: 100%;
-  background-color: black;
+  background-color: rgba(0,0,0,.8);
+  position: fixed;
+  z-index: 10;
+}
+
+.top {
+  padding-top: 150px;
 }
 
 .box_header {
@@ -132,12 +142,12 @@ input {
 
 /* SEZIONE FILM */
 
-.box_film {
+.box_movie {
   width: 94%;
   margin: auto;
 }
 
-.box_film ul {
+.box_movie ul {
   display: flex;
   flex-wrap: wrap;
 }
