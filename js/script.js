@@ -2,7 +2,6 @@ $(document).ready(function() {
   $('#button').on('click', function() {
     searchAll();
   });
-
   // invio con la tastiera
   $('input').keypress(function(){
     if (event.which == 13) {
@@ -36,8 +35,12 @@ function printMovie(arrayMovie) {
     // var num = numIntgr(movie.vote_average);
     // console.log(movie.vote_average);
     // console.log(movie.original_language);
+    var poster = '/ocsmt4duUyNZtTM641k262PBeIU.jpg';
+    if (movie.poster_path) {
+      poster = movie.poster_path;
+    }
     var context = {
-      'path_img': printImg(movie.poster_path),
+      'path_img': printImg(poster),
       'title': movie.title,
       'original_title': movie.original_title,
       'lang': printFlag(movie.original_language),
@@ -46,12 +49,12 @@ function printMovie(arrayMovie) {
       'overview': movie.overview
     };
     console.log(movie.poster_path);
-    
+
     // console.log(movie.poster_path);
-    if (movie.poster_path == null) {
-      movie.poster_path = '/ocsmt4duUyNZtTM641k262PBeIU.jpg';
-    }
-    console.log(movie.poster_path);
+    // if (movie.poster_path == null) {
+    //   movie.poster_path = '/ocsmt4duUyNZtTM641k262PBeIU.jpg';
+    // }
+    // console.log(movie.poster_path);
     // console.log(movie.original_language);
     // console.log(printImg(movie.poster_path));
     // console.log(printStar(movie.vote_average));
@@ -66,8 +69,12 @@ function printTvShow(arrayMovie) {
   var template = Handlebars.compile(source);
   for (var i = 0; i < arrayMovie.length; i++) {
     var movie = arrayMovie[i];
+    var poster = '/ocsmt4duUyNZtTM641k262PBeIU.jpg';
+    if (movie.poster_path) {
+      poster = movie.poster_path;
+    }
     var context = {
-      'path_img': printImg(movie.poster_path),
+      'path_img': printImg(poster),
       'name': movie.name,
       'original_name': movie.original_name,
       'lang': printFlag(movie.original_language),
@@ -78,9 +85,9 @@ function printTvShow(arrayMovie) {
 
     // console.log(movie.poster_path);
 
-    if (movie.poster_path == null) {
-      movie.poster_path = '/ocsmt4duUyNZtTM641k262PBeIU.jpg';
-    }
+    // if (movie.poster_path == null) {
+    //   movie.poster_path = '/ocsmt4duUyNZtTM641k262PBeIU.jpg';
+    // }
 
     console.log(movie.poster_path);
     // console.log(movie.poster_path);
