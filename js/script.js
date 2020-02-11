@@ -22,6 +22,9 @@ function searchAll() {
   searchMovie(input, key, urlTvshow);
   // ripristino il campo input vuoto
   $('input').val('');
+  if (input == '') {
+    $('#film_text').append('Inserisci del testo');
+  }
 }
 
 // creo una funzione che cicla dentro l'array che contiene i film e stampo con handlebars
@@ -82,7 +85,7 @@ function printTvShow(arrayMovie) {
 
 function searchMovie(input, key, url) {
   if (input == '') {
-    console.log('Inserisci un titolo');
+    // console.log('Inserisci un titolo');
     $('#film_text').append(' Inserisci un titolo');
   }
   $('#film_text').empty();
@@ -106,7 +109,7 @@ function searchMovie(input, key, url) {
         printTvShow(results);
         if (results == '') {
           // console.log('ciao');
-          $('#film_text').append('Non è stato trovato nessun film con questo nome  ');
+          $('#film_text').append('Non è disponibile');
         }
       },
       'error': function(request, state, error) {
