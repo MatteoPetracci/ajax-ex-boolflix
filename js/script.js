@@ -27,33 +27,30 @@
 
 $(document).ready(function() {
   $('#button').on('click', function() {
-    $('#film').empty();
-    var input = $('#input').val();
-    var key = '529c9b24599513d9b7c68c4b715e6f75';
-    var urlMovie = 'https://api.themoviedb.org/3/search/movie' ;
-    var urlTvshow = 'https://api.themoviedb.org/3/search/tv' ;
-    searchMovie(input, key, urlMovie);
-    searchMovie(input, key, urlTvshow);
-
-    // ripristino il campo input vuoto
-    $('input').val('');
+    searchAll();
   });
+
   // invio con la tastiera
   $('input').keypress(function(){
-    var input = $('#input').val();
-    var key = '529c9b24599513d9b7c68c4b715e6f75';
-    var urlMovie = 'https://api.themoviedb.org/3/search/movie' ;
-    var urlTvshow = 'https://api.themoviedb.org/3/search/tv' ;
     if (event.which == 13) {
-      $('#film').empty();
-      searchMovie(input, key, urlMovie);
-      searchMovie(input, key, urlTvshow);
-      $('input').val('');
+      searchAll();
     }
   });
 });
 
 // **********Funzioni**********
+
+function searchAll() {
+  $('#film').empty();
+  var input = $('#input').val();
+  var key = '529c9b24599513d9b7c68c4b715e6f75';
+  var urlMovie = 'https://api.themoviedb.org/3/search/movie' ;
+  var urlTvshow = 'https://api.themoviedb.org/3/search/tv' ;
+  searchMovie(input, key, urlMovie);
+  searchMovie(input, key, urlTvshow);
+  // ripristino il campo input vuoto
+  $('input').val('');
+}
 
 // creo una funzione che cicla dentro l'array che contiene i film e stampo con handlebars
 
