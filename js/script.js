@@ -46,10 +46,14 @@ function printMovie(arrayMovie) {
     if (movie.title) {
       title = movie.title;
     }
+    var titleOriginal = 'Not found';
+    if (movie.original_title) {
+      titleOriginal = movie.original_title;
+    }
     var context = {
       'path_img': printImg(poster),
       'title': title,
-      'original_title': movie.original_title,
+      'original_title': titleOriginal,
       'lang': printFlag(movie.original_language),
       'vote': movie.vote_average,
       'star': printStar(movie.vote_average),
@@ -77,10 +81,14 @@ function printTvShow(arrayMovie) {
     if (movie.name) {
       name = movie.name;
     }
+    var nameOriginal = 'Not found';
+    if (movie.original_name) {
+      nameOriginal = movie.original_name;
+    }
     var context = {
       'path_img': printImg(poster),
       'name': name,
-      'original_name': movie.original_name,
+      'original_name': nameOriginal,
       'lang': printFlag(movie.original_language),
       'vote': movie.vote_average,
       'star': printStar(movie.vote_average),
