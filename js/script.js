@@ -28,17 +28,26 @@
 $(document).ready(function() {
   $('#button').on('click', function() {
     $('#film').empty();
-    searchMovie();
-    searchTvShow();
+    var input = $('#input').val();
+    var key = '529c9b24599513d9b7c68c4b715e6f75';
+    var urlMovie = 'https://api.themoviedb.org/3/search/movie' ;
+    var urlTvshow = 'https://api.themoviedb.org/3/search/tv' ;
+    searchMovie(input, key, urlMovie);
+    searchMovie(input, key, urlTvshow);
+
     // ripristino il campo input vuoto
     $('input').val('');
   });
   // invio con la tastiera
   $('input').keypress(function(){
+    var input = $('#input').val();
+    var key = '529c9b24599513d9b7c68c4b715e6f75';
+    var urlMovie = 'https://api.themoviedb.org/3/search/movie' ;
+    var urlTvshow = 'https://api.themoviedb.org/3/search/tv' ;
     if (event.which == 13) {
       $('#film').empty();
-      searchMovie();
-      searchTvShow();
+      searchMovie(input, key, urlMovie);
+      searchMovie(input, key, urlTvshow);
       $('input').val('');
     }
   });
@@ -98,23 +107,21 @@ function printTvShow(arrayMovie) {
   }
 }
 
-function searchMovie(movie) {
-  // clicco sul bottone per prendere il valore di input
-  var input = $('#input').val();
-  // console.log(input);
+function searchMovie(input, key, url) {
+
   if (input == '') {
     console.log('Inserisci un titolo');
-    $('#film').append(' Inserisci un titolo di una serie televisiva');
+    $('#film').append(' Inserisci un titolo');
   }
   // chiamata ajax
   $.ajax(
     {
-      'url': 'https://api.themoviedb.org/3/search/movie',
+      'url': url,
       'method':'GET',
       'data': {
-        api_key :'529c9b24599513d9b7c68c4b715e6f75',
+        api_key : key,
         query : input,
-        language: "it-IT"
+        language : "it-IT"
       },
       'success': function(data) {
         // console.log(data);
@@ -123,42 +130,14 @@ function searchMovie(movie) {
         var results = data.results;
         console.log(results);
         printMovie(results);
+        printTvShow(results);
         if (results == '') {
           // console.log('ciao');
-          // $('#film_text').append('Non è stato trovato nessun film con questo nome  ');
+          $('#film_text').append('Non è stato trovato nessun film con questo nome  ');
         }
       },
       'error': function(request, state, error) {
         // console.log('error', error);
-      }
-    }
-  );
-}
-
-function searchTvShow(movie){
-  var input = $('#input').val();
-  if (input == '') {
-    console.log('Inserisci un titolo');
-    $('#film').append('Inserisci un titolo di un film');
-  }
-  $.ajax(
-    {
-      'url': 'https://api.themoviedb.org/3/search/tv',
-      'method':'GET',
-      'data': {
-        api_key :'529c9b24599513d9b7c68c4b715e6f75',
-        query : input,
-        language: "it-IT"
-      },
-      'success': function(data) {
-        var results = data.results;
-        printTvShow(results);
-        if (results == '') {
-          $('#film').append('Non è stato trovato nessuna serie tv con questo nome');
-        }
-      },
-      'error': function(request, state, error) {
-        console.log('error', error);
       }
     }
   );
