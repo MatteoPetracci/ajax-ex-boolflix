@@ -39,7 +39,7 @@ function printMovie(arrayMovie) {
     if (movie.poster_path) {
       poster = movie.poster_path;
     }
-    var overview = 'Non è disponibile'
+    var overview = 'Non è disponibile';
     if (movie.overview) {
       overview = movie.overview;
     }
@@ -75,6 +75,10 @@ function printTvShow(arrayMovie) {
     if (movie.poster_path) {
       poster = movie.poster_path;
     }
+    var overview = 'Non è disponibile';
+    if (movie.overview) {
+      overview = movie.overview;
+    }
     var context = {
       'path_img': printImg(poster),
       'name': movie.name,
@@ -82,7 +86,7 @@ function printTvShow(arrayMovie) {
       'lang': printFlag(movie.original_language),
       'vote': movie.vote_average,
       'star': printStar(movie.vote_average),
-      'overview': movie.overview
+      'overview': overview
     };
 
     // console.log(movie.poster_path);
