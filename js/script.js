@@ -39,6 +39,10 @@ function printMovie(arrayMovie) {
     if (movie.poster_path) {
       poster = movie.poster_path;
     }
+    var overview = 'Non è disponibile'
+    if (movie.overview) {
+      overview = movie.overview;
+    }
     var context = {
       'path_img': printImg(poster),
       'title': movie.title,
@@ -46,14 +50,12 @@ function printMovie(arrayMovie) {
       'lang': printFlag(movie.original_language),
       'vote': movie.vote_average,
       'star': printStar(movie.vote_average),
-      'overview': movie.overview
+      'overview': overview
     };
     console.log(movie.poster_path);
+    console.log(movie.overview);
 
-    // console.log(movie.poster_path);
-    // if (movie.poster_path == null) {
-    //   movie.poster_path = '/ocsmt4duUyNZtTM641k262PBeIU.jpg';
-    // }
+
     // console.log(movie.poster_path);
     // console.log(movie.original_language);
     // console.log(printImg(movie.poster_path));
