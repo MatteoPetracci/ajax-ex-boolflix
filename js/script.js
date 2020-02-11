@@ -23,7 +23,7 @@ function searchAll() {
   // ripristino il campo input vuoto
   $('input').val('');
   if (input == '') {
-    $('#film_text').append('Inserisci del testo');
+    $('h4').append('Inserisci del testo');
   }
 }
 
