@@ -18,12 +18,15 @@ function searchAll() {
   var key = '529c9b24599513d9b7c68c4b715e6f75';
   var urlMovie = 'https://api.themoviedb.org/3/search/movie' ;
   var urlTvshow = 'https://api.themoviedb.org/3/search/tv' ;
+  $('#movie').empty();
+  $('#tv').empty();
   searchMovie(input, key, urlMovie);
   searchMovie(input, key, urlTvshow);
   // ripristino il campo input vuoto
   $('input').val('');
   if (input == '') {
-    $('h4').append('Inserisci del testo');
+    $('#movie').empty();
+    $('#tv').empty();
   }
 }
 
