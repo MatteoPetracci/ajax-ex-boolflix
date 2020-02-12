@@ -13,11 +13,10 @@ $(document).ready(function() {
 // **********Funzioni**********
 
 function searchAll() {
-  $('#movie').empty();
   var input = $('#input').val();
   var key = '529c9b24599513d9b7c68c4b715e6f75';
-  var urlMovie = 'https://api.themoviedb.org/3/search/movie' ;
-  var urlTvshow = 'https://api.themoviedb.org/3/search/tv' ;
+  var urlMovie = 'https://api.themoviedb.org/3/search/movie';
+  var urlTvshow = 'https://api.themoviedb.org/3/search/tv';
   $('#movie').empty();
   $('#tv').empty();
   searchMovie(input, key, urlMovie);
@@ -76,31 +75,30 @@ function printTvShow(arrayMovie) {
     if (movie.poster_path) {
       poster = movie.poster_path;
     }
-    var overview = 'Non è disponibile';
-    if (movie.overview) {
-      overview = movie.overview;
-    }
-    var name = 'Not found';
-    if (movie.name) {
-      name = movie.name;
-    }
-    var nameOriginal = 'Not found';
-    if (movie.original_name) {
-      nameOriginal = movie.original_name;
+    // var overview = 'Non è disponibile';
+    // if (movie.overview) {
+    //   overview = movie.overview;
+    // }
+    // var name = 'Not found';
+    // if (movie.name) {
+    //   name = movie.name;
+    // }
+    // var nameOriginal = 'Not found';
+    // if (movie.original_name) {
+    //   nameOriginal = movie.original_name;
     }
     var context = {
       'path_img': printImg(poster),
-      'name': name,
-      'original_name': nameOriginal,
+      'name': movie.name,
+      'original_name': movie.original_name,
       'lang': printFlag(movie.original_language),
       'vote': movie.vote_average,
       'star': printStar(movie.vote_average),
-      'overview': overview
+      'overview': movie.overview
     };
     var html = template(context);
     $('#tv').append(html);
   }
-}
 
 function searchMovie(input, key, url) {
   if (input == '') {
@@ -134,10 +132,10 @@ function searchMovie(input, key, url) {
       'error': function(request, state, error) {
         // console.log('error', error);
       }
+
     }
   );
 }
-
 function printStar(vote) {
   // Rendo il numero intero
   vote = Math.floor((vote / 2));
