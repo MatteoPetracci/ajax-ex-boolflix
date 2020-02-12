@@ -24,8 +24,8 @@ function searchAll() {
   // ripristino il campo input vuoto
   $('input').val('');
   if (input == '') {
-    $('#movie').empty();
-    $('#tv').empty();
+    $('#movie').text('Inserisci un titolo');
+    $('#tv').text('Inserisci un titolo');
   }
 }
 
@@ -86,7 +86,7 @@ function printTvShow(arrayMovie) {
     // var nameOriginal = 'Not found';
     // if (movie.original_name) {
     //   nameOriginal = movie.original_name;
-    }
+
     var context = {
       'path_img': printImg(poster),
       'name': movie.name,
@@ -99,6 +99,7 @@ function printTvShow(arrayMovie) {
     var html = template(context);
     $('#tv').append(html);
   }
+}
 
 function searchMovie(input, key, url) {
   if (input == '') {
