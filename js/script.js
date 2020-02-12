@@ -75,30 +75,30 @@ function printTvShow(arrayMovie) {
     if (movie.poster_path) {
       poster = movie.poster_path;
     }
-    // var overview = 'Non è disponibile';
-    // if (movie.overview) {
-    //   overview = movie.overview;
-    // }
-    // var name = 'Not found';
-    // if (movie.name) {
-    //   name = movie.name;
-    // }
-    // var nameOriginal = 'Not found';
-    // if (movie.original_name) {
-    //   nameOriginal = movie.original_name;
-
+    var overview = 'Non è disponibile';
+    if (movie.overview) {
+      overview = movie.overview;
+    }
+    var name = 'Not found';
+    if (movie.name) {
+      name = movie.name;
+    }
+    var nameOriginal = 'Not found';
+    if (movie.original_name) {
+      nameOriginal = movie.original_name;
     var context = {
       'path_img': printImg(poster),
-      'name': movie.name,
-      'original_name': movie.original_name,
+      'name': name,
+      'original_name': nameOriginal,
       'lang': printFlag(movie.original_language),
       'vote': movie.vote_average,
       'star': printStar(movie.vote_average),
-      'overview': movie.overview
+      'overview': overview
     };
     var html = template(context);
     $('#tv').append(html);
   }
+}
 }
 
 function searchMovie(input, key, url) {
@@ -133,7 +133,6 @@ function searchMovie(input, key, url) {
       'error': function(request, state, error) {
         // console.log('error', error);
       }
-
     }
   );
 }
